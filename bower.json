@@ -1,0 +1,48 @@
+{
+  "name": "angular-resilient",
+  "description": "Resilient HTTP client with Angular feelings",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Tomas Aparicio",
+  "repository": "h2non/angular-resilient",
+  "main": "./angular-resilient.js",
+  "keywords": [
+    "angular",
+    "parallel",
+    "worker",
+    "webworker",
+    "processing",
+    "process",
+    "fork",
+    "compute",
+    "non-blocking",
+    "blocking",
+    "multiprocess",
+    "child",
+    "multicore",
+    "spawn"
+  ],
+  "ignore": [
+    "**/.*",
+    ".*",
+    "*.md",
+    "src",
+    "lib",
+    "test",
+    "Makefile",
+    ".editorconfig",
+    ".gitignore",
+    ".travis.yml",
+    ".npmignore",
+    "package.json",
+    "component.json",
+    "examples"
+  ],
+  "dependencies": {
+    "thread": "~0.1.1"
+  },
+  "devDependencies": {
+    "angular": "~1.2.23",
+    "angular-mocks": "~1.2.23"
+  }
+}
