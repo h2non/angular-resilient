@@ -1,7 +1,7 @@
 BROWSERIFY = node ./node_modules/browserify/bin/cmd.js
 MOCHA = ./node_modules/.bin/mocha
 UGLIFYJS = ./node_modules/.bin/uglifyjs
-BANNER = "/*! angular-thread - v0.1 - MIT License - https://github.com/h2non/angular-thread */"
+BANNER = "/*! angular-resilient - v0.1 - MIT License - https://github.com/h2non/angular-resilient */"
 MOCHA_PHANTOM = ./node_modules/.bin/mocha-phantomjs
 
 define release
@@ -27,7 +27,7 @@ browser: uglify
 test: browser mocha
 
 uglify:
-	$(UGLIFYJS) angular-thread.js --mangle --preamble $(BANNER) --source-map angular-resilient.min.js.map > angular-resilient.min.js
+	$(UGLIFYJS) angular-resilient.js --mangle --preamble $(BANNER) --source-map angular-resilient.min.js.map > angular-resilient.min.js
 
 mocha:
 	$(MOCHA_PHANTOM) --reporter spec --ui bdd test/runner.html

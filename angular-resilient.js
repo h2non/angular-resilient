@@ -1,74 +1,82 @@
-/*! angular-thread - v0.1 - MIT License - https://github.com/h2non/angular-thread */
-angular.module('ngThread', [])
+/*! angular-resilient - v0.1 - MIT License - https://github.com/h2non/angular-resilient */
+angular.module('ngResilient', [])
 
-  .constant('$$thread', window.thread)
+  .constant('$$resilient', window.resilient)
 
-  .config(['$$thread', function (thread) {
-    if (typeof thread !== 'function') {
-      throw new Error('thread.js is not loaded')
+  .config(['$$resilient', function (resilient) {
+    if (typeof resilient !== 'function') {
+      throw new Error('resilient.js is not loaded')
     }
   }])
 
-  .provider('$thread', ['$$thread', function (thread) {
-    function threadProvider() {
-      return thread
-    }
-    threadProvider.$get = threadProvider
-    return threadProvider
-  }])
-
-  .provider('$threadRun', ['$$thread', function (thread) {
-    function runner() {
-      var job = this.thread ? this.thread : thread()
-      var task = job.run.apply(job, arguments)
-      if (!this.thread) {
-        task['finally'](function () { job.kill() })
+  .factory('$resilient', ['$http', '$$resilient', '$ResilientProxy',
+    function ($http, resilient, ResilientProxy) {
+      function proxy(options, cb) {
+        $http(options).then(function (res) {
+          cb(null, res)
+        }, function (err) {
+          cb(err)
+        })
       }
-      return task
-    }
-    runner.$get = function () {
-      function run() { return runner.apply(run, arguments) }
-      run.thread = null
-      return run
-    }
-    return runner
-  }])
 
-  .provider('$threadPool', ['$$thread', function (thread) {
-    function poolFactory(num) {
-      return thread().pool(num)
-    }
-    poolFactory.$get = function () { return poolFactory }
-    return poolFactory
-  }])
+      function ResilientClient(options) {
+        var client = resilient(options)
+        client.setHttpClient(proxy)
+        return ResilientProxy(client)
+      }
 
-  .provider('$threadStore', ['$$thread', function ($$thread) {
-    function store() {
-      var buf = []
-      return {
-        get: function () {
-          return buf.slice()
-        },
-        push: function (thread) {
-          if (thread && thread instanceof $$thread.Thread)
-            if (!this.has(thread)) buf.push(thread)
-        },
-        remove: function (thread) {
-          var index = buf.indexOf(thread)
-          if (index >= 0) buf.splice(index, 1)
-          return index
-        },
-        flush: function () {
-          buf.splice(0)
-        },
-        has: function (thread) {
-          return buf.indexOf(thread) !== -1
-        },
-        total: function () {
-          return buf.length
+      return ResilientClient
+    }
+  ])
+
+  .factory('$ResilientProxy', ['$q', function ($q) {
+    function ResilientProxy(resilient) {
+      function handler(defer) {
+        return function (err, res) {
+          if (err) defer.reject(err)
+          else defer.resolve(res)
         }
       }
+
+      function request(options) {
+        var defer = $q.defer()
+        resilient.send(options, handler(defer))
+        return defer.promise
+      }
+
+      function normalizeArgs(url, options) {
+        if (angular.isObject(url)) {
+          options = url
+        } else {
+          options = angular.isObject(options) ? options : {}
+          options.url = url
+        }
+        return options
+      }
+
+      function methodProxy(method) {
+        return function (url, options) {
+          options = normalizeArgs(url, options)
+          options.method = method
+          return Resilient(options)
+        }
+      }
+
+      function Resilient(url, options) {
+        return request(normalizeArgs(options))
+      }
+
+      Resilient.resilient = resilient
+      Resilient.defaults = resilient.defaults
+      Resilient.get = methodProxy('get')
+      Resilient.post = methodProxy('POST')
+      Resilient.put = methodProxy('PUT')
+      Resilient.del = methodProxy('DELETE')
+      Resilient.patch = methodProxy('PATCH')
+      Resilient.head = methodProxy('HEAD')
+
+      return Resilient
     }
-    store.$get = store
-    return store
+
+    return ResilientProxy
   }])

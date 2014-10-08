@@ -1,26 +1,26 @@
 {
   "name": "angular-resilient",
-  "description": "Resilient HTTP client with Angular feelings",
+  "description": "Make $http resilient",
   "version": "0.1.0",
   "license": "MIT",
   "author": "Tomas Aparicio",
   "repository": "h2non/angular-resilient",
   "main": "./angular-resilient.js",
   "keywords": [
-    "angular",
-    "parallel",
-    "worker",
-    "webworker",
-    "processing",
-    "process",
-    "fork",
-    "compute",
-    "non-blocking",
-    "blocking",
-    "multiprocess",
-    "child",
-    "multicore",
-    "spawn"
+    "resilient",
+    "reactive",
+    "balancer",
+    "discovering",
+    "servers",
+    "dynamic",
+    "balance",
+    "balancing",
+    "discover",
+    "responsive",
+    "fault",
+    "tolerant",
+    "fallback",
+    "hydra"
   ],
   "ignore": [
     "**/.*",
@@ -39,7 +39,7 @@
     "examples"
   ],
   "dependencies": {
-    "thread": "~0.1.1"
+    "resilient": "~0.1.0"
   },
   "devDependencies": {
     "angular": "~1.2.23",
