@@ -68,40 +68,40 @@ app.controller('ProfileCtrl', function (ResilientService) {
 })
 ```
 
-### API
+## API
 
 For full featured API, please see the library [documentation](https://github.com/resilient-http/resilient.js)
 
 Options param should be a valid $http [options compatible](https://docs.angularjs.org/api/ng/service/$http#usage) object
 
-#### $resilient([ options ])
+### $resilient([ options ])
 
 `options` params should be a valid [Resilient options](https://github.com/resilient-http/resilient.js#options) object
 
-##### $resilient#get(path [, options])
+#### $resilient#get(path [, options])
 Return: `promise`
 
-##### $resilient#post(path [, options])
+#### $resilient#post(path [, options])
 Return: `promise`
 
-##### $resilient#put(path [, options])
+#### $resilient#put(path [, options])
 Return: `promise`
 
-##### $resilient#del(path [, options])
+#### $resilient#del(path [, options])
 Return: `promise`
 
-##### $resilient#patch(path [, options])
+#### $resilient#patch(path [, options])
 Return: `promise`
 
-##### $resilient#head(path [, options])
+#### $resilient#head(path [, options])
 Return: `promise`
 
-##### $resilient.resilient
+#### $resilient.resilient
 Type: `Resilient`
 
 Expose the `Resilient` [API](https://github.com/resilient-http/resilient.js#api)
 
-##### $resilient#defaults
+#### $resilient#defaults
 Type: `object`
 
 Default `Resilient` client options
