@@ -1,8 +1,8 @@
-# angular-resilient [![Build Status](https://api.travis-ci.org/h2non/angular-thread.svg?branch=master)][travis] [![Code Climate](https://codeclimate.com/github/h2non/angular-thread/badges/gpa.svg)](https://codeclimate.com/github/h2non/angular-thread)
+# angular-resilient [![Build Status](https://api.travis-ci.org/h2non/angular-resilient.svg?branch=master)][travis] [![Code Climate](https://codeclimate.com/github/h2non/angular-resilient/badges/gpa.svg)](https://codeclimate.com/github/h2non/angular-resilient)
 
-[AngularJS](http://angularjs.org) wrapper for the [Resilient](http://resilient-http.github.io) HTTP client
+Make $http resilient. An [AngularJS](http://angularjs.org) wrapper for the [Resilient](http://resilient-http.github.io) HTTP client that allows to use all the $http features, such as interceptors, options, mocking
 
-For more information about Resilient, please see library the library [documentation](https://github.com/resilient-http/resilient.js)
+For more information about Resilient, please see the library [documentation](https://github.com/resilient-http/resilient.js)
 
 It works with Angular >= 1.0
 
@@ -42,126 +42,67 @@ var app = angular.module('app', ['ngResilient'])
 
 #### $resilient
 
-Main service to creating threads.
-It's an injectable shortcut to `thread.js` public [API](https://github.com/h2non/thread.js#api)
+Main service to creating new Resilient HTTP clients
 
 ```js
-app.factory('CoolService', function ($thread) {
-  var users = ['John', 'Michael', 'Jessica', 'Tom']
-  var thread = $thread({
-    env: { search: 'Tom' },
-    require: 'http://cdn.rawgit.com/h2non/hu/0.1.1/hu.js'
-  })
-
-  thread.run(function (users) {
-    return hu.filter(users, function (user) {
-      return user === env.search
-    })
-  }, [ users ]).then(function (users) {
-    console.log(users) // -> ['Tom']
+app.factory('ResilientService', function ($resilient) {
+  return $resilient({
+    service: {
+      basePath: '/api/1.0'
+    },
+    discovery: {
+      servers: ['http://discover.api.me', 'http://discover.api.me']
+    }
   })
 })
 ```
 
-#### $threadRun
-
-Shortcut service to run task in a new thread or custom thread.
-See the original API [method documentation](https://github.com/h2non/thread.js#threadrunfn-env-args)
-
-Running task in a new thread (created transparently).
-The thread will be killed after the task finished with success or fail state
+Consuming the Resilient client
 ```js
-app.factory('CoolService', function ($threadRun) {
-  $threadRun(intensiveTask, /* { bind context }, [ task arguments ] */)
-    .then(function (result) {
-      // ...
-    }, function (err) {
-      // ...
-    })
-})
-```
+app.controller('ProfileCtrl', function (ResilientService) {
+  ResilientService.get('/user').then(function () {
 
-Reusing an existent pre-configured thread.
-```js
-app.factory('CoolService', function ($threadRun, $thread) {
-  var thread = $thread({
-    env: { timeout: 10 },
-    require: 'http://cdn.rawgit.com/h2non/hu/0.1.1/hu.js'
-  })
-  // define the thread to reuse instead of creating a new one
-  $threadRun.thread = thread
-  $threadRun(intensiveTask).then(function (result) {
-    // ...
-  }, function (err) {
-    // ...
   })
 })
 ```
 
-#### $threadPool
+### API
 
-Built-in service to create pool of threads.
-See the original API [method documentation](https://github.com/h2non/thread.js#threadpoolnumber)
+For full featured API, please see the library [documentation](https://github.com/resilient-http/resilient.js)
 
-```js
-app.factory('CoolService', function ($threadPool) {
-  var pool = $threadPool(10)
-  pool.run(intensiveTask).then(function (result) {
-    // ...
-  }, function (err) {
-    // ...
-  })
-})
-```
+Options param should be a valid $http [options compatible](https://docs.angularjs.org/api/ng/service/$http#usage) object
 
-#### $threadStore
+#### $resilient([ options ])
 
-Useful helper service to create containers to store and manage thread pools
-that you could use in your application
+`options` params should be a valid [Resilient options](https://github.com/resilient-http/resilient.js#options) object
 
-It supports basic CRUD operations
+##### $resilient#get(path [, options])
+Return: `promise`
 
-```js
-app.factory('CoolService', function ($threadStore, $thread) {
-  var thread = $thread()
-  // adding
-  $threadStore.push(thread)
-  // getting
-  $threadStore.get() // -> [ Thread ]
-  // checking
-  $threadStore.has(thread) // -> true
-  // removing
-  $threadStore.remove(thread)
-  // flushing
-  $threadStore.flush()
-  // counting
-  $threadStore.total() // -> 0
-})
-```
+##### $resilient#post(path [, options])
+Return: `promise`
 
-##### $threadStore.push(thread)
+##### $resilient#put(path [, options])
+Return: `promise`
 
-Add a new thread to the container
+##### $resilient#del(path [, options])
+Return: `promise`
 
-##### $threadStore.get()
+##### $resilient#patch(path [, options])
+Return: `promise`
 
-Get all the container threads
+##### $resilient#head(path [, options])
+Return: `promise`
 
-##### $threadStore.remove(thread)
+##### $resilient.resilient
+Type: `Resilient`
 
-Remove a given stored thread in the container
+Expose the `Resilient` [API](https://github.com/resilient-http/resilient.js#api)
 
-##### $threadStore.flush(thread)
+##### $resilient#defaults
+Type: `object`
 
-Empty all the container store
-
-##### $threadStore.total()
-
-Return the total number of threads stored
-
-##### $threadStore.has(thread)
-
-Return `true` if the given thread is already stored in the container
+Default `Resilient` client options
 
 ## Contributing
 
@@ -176,7 +117,7 @@ Only [node.js](http://nodejs.org) is required for development
 
 Clone the repository
 ```bash
-$ git clone https://github.com/h2non/angular-thread.git && cd angular-thread
+$ git clone https://github.com/h2non/angular-resilient.git && cd angular-resilient
 ```
 
 Install dependencies
@@ -201,4 +142,4 @@ $ make test
 
 [MIT](http://opensource.org/licenses/MIT) © Tomas Aparicio
 
-[travis]: http://travis-ci.org/h2non/angular-thread
+[travis]: http://travis-ci.org/h2non/angular-resilient
