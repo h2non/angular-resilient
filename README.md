@@ -60,8 +60,10 @@ app.factory('ResilientService', function ($resilient) {
 Consuming the Resilient client
 ```js
 app.controller('ProfileCtrl', function (ResilientService) {
-  ResilientService.get('/user').then(function () {
-
+  ResilientService.get('/user').then(function (res) {
+    // ...
+  }, function (err) {
+    // ...
   })
 })
 ```
