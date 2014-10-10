@@ -1,6 +1,10 @@
 describe('$resilient', function () {
   var $resilient, $$resilient
 
+  function proxy(options, cb) {
+    cb(null, { status: 200 })
+  }
+
   beforeEach(module('ngResilient'))
 
   beforeEach(inject(function (_$$resilient_, _$resilient_) {
@@ -29,9 +33,10 @@ describe('$resilient', function () {
       resilient = $resilient({
         service: { servers: [ location.origin + '/server' ] }
       })
+      resilient.resilient.setHttpClient(proxy)
     })
 
-    it('should perform a request', function () {
+    it('should perform GET request', function () {
       resilient.get('/test')
     })
 
