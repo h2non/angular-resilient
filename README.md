@@ -1,6 +1,6 @@
 # angular-resilient [![Build Status](https://api.travis-ci.org/h2non/angular-resilient.svg?branch=master)][travis] [![Code Climate](https://codeclimate.com/github/h2non/angular-resilient/badges/gpa.svg)](https://codeclimate.com/github/h2non/angular-resilient)
 
-Make $http resilient. An [AngularJS](http://angularjs.org) wrapper for the [Resilient](http://resilient-http.github.io) HTTP client that allows to use all the $http features, such as interceptors, options, mocking
+Make [$http](https://docs.angularjs.org/api/ng/service/$http) resilient. An [AngularJS](http://angularjs.org) wrapper for the [Resilient](http://resilient-http.github.io) HTTP client that allows to use all the $http features, such as interceptors, options, mocking
 
 For more information about Resilient, please see the library [documentation](https://github.com/resilient-http/resilient.js)
 
