@@ -66,6 +66,7 @@ angular.module('ngResilient', [])
 
       Resilient.resilient = resilient
       Resilient.defaults = resilient.defaults
+      Resilient.VERSION = resilient.VERSION
       Resilient.get = methodProxy('GET')
       Resilient.post = methodProxy('POST')
       Resilient.put = methodProxy('PUT')
