@@ -14,9 +14,7 @@ angular.module('ngResilient', [])
       function proxy(options, cb) {
         $http(options).then(function (res) {
           cb(null, res)
-        }, function (err) {
-          cb(err)
-        })
+        }, cb)
       }
 
       function ResilientClient(options) {
@@ -44,31 +42,31 @@ angular.module('ngResilient', [])
         return defer.promise
       }
 
-      function normalizeArgs(url, options) {
-        if (angular.isObject(url)) {
-          options = url
+      function normalizeArgs(path, options) {
+        if (angular.isObject(path)) {
+          options = path
         } else {
           options = angular.isObject(options) ? options : {}
-          options.url = url
+          options.path = path
         }
         return options
       }
 
       function methodProxy(method) {
-        return function (url, options) {
-          options = normalizeArgs(url, options)
+        return function (path, options) {
+          options = normalizeArgs(path, options)
           options.method = method
           return Resilient(options)
         }
       }
 
-      function Resilient(url, options) {
-        return request(normalizeArgs(options))
+      function Resilient(path, options) {
+        return request(normalizeArgs(path, options))
       }
 
       Resilient.resilient = resilient
       Resilient.defaults = resilient.defaults
-      Resilient.get = methodProxy('get')
+      Resilient.get = methodProxy('GET')
       Resilient.post = methodProxy('POST')
       Resilient.put = methodProxy('PUT')
       Resilient.del = methodProxy('DELETE')

@@ -3,16 +3,10 @@ describe('$resilient', function () {
 
   beforeEach(module('ngResilient'))
 
-  beforeEach(inject(function (_$$resilient_, _$resilient_, _$httpBackend_) {
+  beforeEach(inject(function (_$$resilient_, _$resilient_) {
     $resilient = _$resilient_
     $$resilient = _$$resilient_
-    $httpBackend = _$httpBackend_
   }))
-
-  afterEach(function() {
-    $httpBackend.verifyNoOutstandingExpectation()
-    $httpBackend.verifyNoOutstandingRequest()
-  })
 
   describe('API', function () {
     it('should expose the resilient API', function () {
@@ -31,31 +25,35 @@ describe('$resilient', function () {
   describe('create client with discovery options', function () {
     var resilient = null
 
-    before(function () {
-      $httpBackend.when('GET', '/discovery')
-        .respond([location.origin +  '/server'])
-      $httpBackend.when('GET', '/server')
-        .respond({ hello: 'world' })
-    })
-
-    after(function() {
-      $httpBackend.verifyNoOutstandingExpectation();
-      $httpBackend.verifyNoOutstandingRequest();
-    })
-
     it('should create a client', function () {
       resilient = $resilient({
-        discovery: { servers: [location.origin + '/discovery'] }
+        service: { servers: [ location.origin + '/server' ] }
       })
     })
 
-    it('should perform a request', function (done) {
-      resilient.get('/').then(function (res) {
-        console.log(res)
-        done()
-      }, function (err) {
-        done(err)
-      })
+    it('should perform a request', function () {
+      resilient.get('/test')
+    })
+
+    it('should perform a POST request', function () {
+      resilient.post('/test')
+    })
+
+    it('should perform a PUT request', function () {
+      resilient.put('/test')
+    })
+
+    it('should perform a DELETE request', function () {
+      resilient.del('/test')
+    })
+
+    it('should perform a PATCH request', function () {
+      resilient.patch('/test')
+    })
+
+    it('should perform a HEAD request', function () {
+      resilient.head('/test')
     })
   })
+
 })
