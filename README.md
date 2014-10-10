@@ -2,7 +2,7 @@
 
 Make [$http](https://docs.angularjs.org/api/ng/service/$http) resilient. An [AngularJS](http://angularjs.org) service wrapper for the [Resilient](http://resilient-http.github.io) HTTP client that allows you to use all the `$http` features, such as interceptors, caching, config options, mocking... and turning you resilient like a boss
 
-For further information about Resilient and how it works, see the [project page](http://resilien-http.github.io) and the JavaScript library [documentation](https://github.com/resilient-http/resilient.js)
+For further information about Resilient and how it works, see the [project page](http://resilient-http.github.io) and the JavaScript library [documentation](https://github.com/resilient-http/resilient.js)
 
 It works with Angular >= 1.0
 
