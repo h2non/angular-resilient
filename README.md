@@ -87,7 +87,7 @@ Return: `promise`
 #### $resilient#put(path [, options])
 Return: `promise`
 
-#### $resilient#del(path [, options])
+#### $resilient#delete(path [, options])
 Return: `promise`
 
 #### $resilient#patch(path [, options])

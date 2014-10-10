@@ -70,7 +70,7 @@ angular.module('ngResilient', [])
       Resilient.get = methodProxy('GET')
       Resilient.post = methodProxy('POST')
       Resilient.put = methodProxy('PUT')
-      Resilient.del = methodProxy('DELETE')
+      Resilient.delete = methodProxy('DELETE')
       Resilient.patch = methodProxy('PATCH')
       Resilient.head = methodProxy('HEAD')
 

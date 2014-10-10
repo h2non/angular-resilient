@@ -49,7 +49,7 @@ describe('$resilient', function () {
     })
 
     it('should perform a DELETE request', function () {
-      resilient.del('/test')
+      resilient.delete('/test')
     })
 
     it('should perform a PATCH request', function () {
