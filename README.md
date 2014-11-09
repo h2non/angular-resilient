@@ -20,7 +20,7 @@ component install h2non/angular-resilient
 
 Or loading the script remotely
 ```html
-<script src="//cdn.rawgit.com/h2non/angular-resilient/0.1.1/angular-resilient.js"></script>
+<script src="//cdn.rawgit.com/h2non/angular-resilient/0.2.0/angular-resilient.js"></script>
 ```
 
 ### Environments
