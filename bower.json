@@ -1,7 +1,7 @@
 {
   "name": "angular-resilient",
   "description": "Make $http resilient",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "license": "MIT",
   "author": "Tomas Aparicio",
   "repository": "h2non/angular-resilient",
@@ -39,7 +39,7 @@
     "examples"
   ],
   "dependencies": {
-    "resilient": "~0.1.0"
+    "resilient": "~0.2.0"
   },
   "devDependencies": {
     "angular": "~1.2.23",

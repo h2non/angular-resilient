@@ -1,4 +1,4 @@
-/*! angular-resilient - v0.1 - MIT License - https://github.com/h2non/angular-resilient */
+/*! angular-resilient - v0.2 - MIT License - https://github.com/h2non/angular-resilient */
 angular.module('ngResilient', [])
 
   .constant('$$resilient', window.resilient)
@@ -19,7 +19,7 @@ angular.module('ngResilient', [])
 
       function ResilientClient(options) {
         var client = resilient(options)
-        client.setHttpClient(proxy)
+        client.useHttpClient(proxy)
         return ResilientProxy(client)
       }
 

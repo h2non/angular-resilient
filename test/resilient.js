@@ -33,7 +33,7 @@ describe('$resilient', function () {
       resilient = $resilient({
         service: { servers: [ location.origin + '/server' ] }
       })
-      resilient.resilient.setHttpClient(proxy)
+      resilient.resilient.useHttpClient(proxy)
     })
 
     it('should perform GET request', function () {

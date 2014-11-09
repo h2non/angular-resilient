@@ -1,7 +1,7 @@
 BROWSERIFY = node ./node_modules/browserify/bin/cmd.js
 MOCHA = ./node_modules/.bin/mocha
 UGLIFYJS = ./node_modules/.bin/uglifyjs
-BANNER = "/*! angular-resilient - v0.1 - MIT License - https://github.com/h2non/angular-resilient */"
+BANNER = "/*! angular-resilient - v0.2 - MIT License - https://github.com/h2non/angular-resilient */"
 MOCHA_PHANTOM = ./node_modules/.bin/mocha-phantomjs
 
 define release
