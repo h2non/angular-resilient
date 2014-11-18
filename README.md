@@ -14,7 +14,7 @@ Via [Bower](http://bower.io)
 bower install angular-resilient
 ```
 
-Via [Component](http://component.io/)
+Via [Component](https://github.com/component/component)
 ```bash
 component install h2non/angular-resilient
 ```
