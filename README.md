@@ -1,8 +1,9 @@
 # angular-resilient [![Build Status](https://api.travis-ci.org/h2non/angular-resilient.svg?branch=master)][travis] [![Code Climate](https://codeclimate.com/github/h2non/angular-resilient/badges/gpa.svg)](https://codeclimate.com/github/h2non/angular-resilient)
 
-Make [$http](https://docs.angularjs.org/api/ng/service/$http) resilient. An [AngularJS](http://angularjs.org) service wrapper for the [Resilient](http://resilient-http.github.io) HTTP client that allows you to use all the `$http` features, such as interceptors, caching, config options, mocking... turning it a failover and client-side balanced client
+Make [$http](https://docs.angularjs.org/api/ng/service/$http) resilient. 
+This is a simple [AngularJS](http://angularjs.org) service wrapper of the [Resilient](http://resilient-http.github.io) HTTP client that allows you to use all the `$http` features, such as interceptors, caching, config options, mocking... but turning it into a failover, client-side balanced and powerful HTTP client
 
-For further information about Resilient and how it works, see the [project page](http://resilient-http.github.io) and the JavaScript library [documentation](https://github.com/resilient-http/resilient.js)
+For further information about Resilient and how it works, see the [project page](http://resilient-http.github.io) and the [JavaScript library](https://github.com/resilient-http/resilient.js)
 
 It works with Angular >= 1.0
 
@@ -13,7 +14,7 @@ Via [Bower](http://bower.io)
 bower install angular-resilient
 ```
 
-Via [Component](http://component.io/)
+Via [Component](https://github.com/component/component)
 ```bash
 component install h2non/angular-resilient
 ```
