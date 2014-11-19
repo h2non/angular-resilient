@@ -1,7 +1,7 @@
 {
   "name": "angular-resilient",
   "description": "Make $http resilient and fault tolerant",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "Tomas Aparicio",
   "repository": "h2non/angular-resilient",
   "scripts": [

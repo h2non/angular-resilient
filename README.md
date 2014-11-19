@@ -1,6 +1,6 @@
 # angular-resilient [![Build Status](https://api.travis-ci.org/h2non/angular-resilient.svg?branch=master)][travis] [![Code Climate](https://codeclimate.com/github/h2non/angular-resilient/badges/gpa.svg)](https://codeclimate.com/github/h2non/angular-resilient)
 
-Make [$http](https://docs.angularjs.org/api/ng/service/$http) resilient. 
+Make [$http](https://docs.angularjs.org/api/ng/service/$http) resilient.
 This is a simple [AngularJS](http://angularjs.org) service wrapper of the [Resilient](http://resilient-http.github.io) HTTP client that allows you to use all the `$http` features, such as interceptors, caching, config options, mocking... but turning it into a failover, client-side balanced and powerful HTTP client
 
 For further information about Resilient and how it works, see the [project page](http://resilient-http.github.io) and the [JavaScript library](https://github.com/resilient-http/resilient.js)
@@ -21,7 +21,7 @@ component install h2non/angular-resilient
 
 Or loading the script remotely
 ```html
-<script src="//cdn.rawgit.com/h2non/angular-resilient/0.2.2/angular-resilient.js"></script>
+<script src="//cdn.rawgit.com/h2non/angular-resilient/0.2.3/angular-resilient.js"></script>
 ```
 
 ### Environments

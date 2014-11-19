@@ -21,6 +21,7 @@ angular.module('ngResilient', [])
 
       function normalizeHeaders(res) {
         if (res && typeof res.headers === 'function') {
+          res.$$headers = res.headers
           res.headers = res.headers()
         }
         return res
@@ -40,9 +41,17 @@ angular.module('ngResilient', [])
     function ResilientProxy(resilient) {
       function handler(defer) {
         return function (err, res) {
-          if (err) defer.reject(err)
-          else defer.resolve(res)
+          if (err) defer.reject(restoreHeaders(err))
+          else defer.resolve(restoreHeaders(res))
         }
+      }
+
+      function restoreHeaders(res) {
+        if (res && typeof res.$$headers === 'function') {
+          res.headers = res.$$headers
+          res.$$headers = undefined
+        }
+        return res
       }
 
       function request(options) {
