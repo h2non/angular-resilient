@@ -1,4 +1,4 @@
-/*! angular-resilient - v0.2.2 - MIT License - https://github.com/h2non/angular-resilient */
+/*! angular-resilient - v0.2.3 - MIT License - https://github.com/h2non/angular-resilient */
 angular.module('ngResilient', [])
 
   .constant('$$resilient', window.resilient)
