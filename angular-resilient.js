@@ -1,4 +1,4 @@
-/*! angular-resilient - v0.2 - MIT License - https://github.com/h2non/angular-resilient */
+/*! angular-resilient - v0.2.2 - MIT License - https://github.com/h2non/angular-resilient */
 angular.module('ngResilient', [])
 
   .constant('$$resilient', window.resilient)
@@ -13,8 +13,17 @@ angular.module('ngResilient', [])
     function ($http, resilient, ResilientProxy) {
       function proxy(options, cb) {
         $http(options).then(function (res) {
-          cb(null, res)
-        }, cb)
+          cb(null, normalizeHeaders(res))
+        }).catch(function (err) {
+          cb(normalizeHeaders(err))
+        })
+      }
+
+      function normalizeHeaders(res) {
+        if (res && typeof res.headers === 'function') {
+          res.headers = res.headers()
+        }
+        return res
       }
 
       function ResilientClient(options) {
