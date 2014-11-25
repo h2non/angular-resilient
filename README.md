@@ -1,6 +1,6 @@
 # angular-resilient [![Build Status](https://api.travis-ci.org/h2non/angular-resilient.svg?branch=master)][travis] [![Code Climate](https://codeclimate.com/github/h2non/angular-resilient/badges/gpa.svg)](https://codeclimate.com/github/h2non/angular-resilient)
 
-Make [$http](https://docs.angularjs.org/api/ng/service/$http) resilient.
+Turn [$http](https://docs.angularjs.org/api/ng/service/$http) into a resilient and failover HTTP client.
 This is a simple [AngularJS](http://angularjs.org) service wrapper of the [Resilient](http://resilient-http.github.io) HTTP client that allows you to use all the `$http` features, such as interceptors, caching, config options, mocking... but turning it into a failover, client-side balanced and powerful HTTP client
 
 For further information about Resilient and how it works, see the [project page](http://resilient-http.github.io) and the [JavaScript library](https://github.com/resilient-http/resilient.js)
@@ -30,7 +30,7 @@ Or loading the script remotely
 - Firefox >= 3
 - Safari >= 5
 - Opera >= 10
-- IE >= 8
+- IE >= 9
 
 ### Setup
 
