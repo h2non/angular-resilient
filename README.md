@@ -21,7 +21,7 @@ component install h2non/angular-resilient
 
 Or loading the script remotely
 ```html
-<script src="//cdn.rawgit.com/h2non/angular-resilient/0.2.3/angular-resilient.js"></script>
+<script src="//cdn.rawgit.com/h2non/angular-resilient/0.3.0/angular-resilient.js"></script>
 ```
 
 ### Environments
@@ -96,6 +96,10 @@ Return: `promise`
 
 #### $resilient#head(path [, options])
 Return: `promise`
+
+#### $resilient.use(middleware)
+
+Register a [middleware](https://github.com/resilient-http/resilient.js#middleware-layer)
 
 #### $resilient.resilient
 Type: `Resilient`

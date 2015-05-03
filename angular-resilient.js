@@ -1,11 +1,11 @@
-/*! angular-resilient - v0.2.3 - MIT License - https://github.com/h2non/angular-resilient */
+/*! angular-resilient - v0.3.0 - MIT License - https://github.com/h2non/angular-resilient */
 angular.module('ngResilient', [])
 
   .constant('$$resilient', window.resilient)
 
   .config(['$$resilient', function (resilient) {
     if (typeof resilient !== 'function') {
-      throw new Error('resilient.js is not loaded')
+      throw new Error('resilient.js is available in the global scope')
     }
   }])
 
@@ -91,6 +91,7 @@ angular.module('ngResilient', [])
       Resilient.delete = methodProxy('DELETE')
       Resilient.patch = methodProxy('PATCH')
       Resilient.head = methodProxy('HEAD')
+      Resilient.use = angular.bind(resilient, resilient.use)
 
       return Resilient
     }
