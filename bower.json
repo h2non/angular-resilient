@@ -20,7 +20,8 @@
     "fault",
     "tolerant",
     "fallback",
-    "hydra"
+    "hydra",
+    "consul"
   ],
   "ignore": [
     "**/.*",
@@ -44,8 +45,5 @@
   "devDependencies": {
     "angular": "~1.2.23",
     "angular-mocks": "~1.2.23"
-  },
-  "resolutions": {
-    "angular": "1.2.28"
   }
 }

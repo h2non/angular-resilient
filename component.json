@@ -24,7 +24,8 @@
     "fault",
     "tolerant",
     "fallback",
-    "hydra"
+    "hydra",
+    "consul"
   ],
   "dependencies": {
     "resilient-http/resilient.js": "~0.3.0"

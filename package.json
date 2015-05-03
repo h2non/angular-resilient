@@ -1,6 +1,28 @@
 {
   "name": "angular-resilient",
-  "private": true,
+  "version": "0.3.0",
+  "description": "Make $http resilient and fault tolerant",
+  "license": "MIT",
+  "author": "Tomas Aparicio",
+  "repository": "h2non/angular-resilient",
+  "main": "./angular-resilient.js",
+  "keywords": [
+    "resilient",
+    "reactive",
+    "balancer",
+    "discovering",
+    "servers",
+    "dynamic",
+    "balance",
+    "balancing",
+    "discover",
+    "responsive",
+    "fault",
+    "tolerant",
+    "fallback",
+    "consul",
+    "angular"
+  ],
   "scripts": {
     "test": "make test"
   },
