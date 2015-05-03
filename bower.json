@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Tomas Aparicio",
   "repository": "h2non/angular-resilient",
-  "main": "./angular-resilient.js",
+  "main": "angular-resilient.js",
   "keywords": [
     "resilient",
     "reactive",
