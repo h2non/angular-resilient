@@ -5,7 +5,7 @@ angular.module('ngResilient', [])
 
   .config(['$$resilient', function (resilient) {
     if (typeof resilient !== 'function') {
-      throw new Error('resilient.js is available in the global scope')
+      throw new Error('resilient.js is not available in the global scope')
     }
   }])
 
